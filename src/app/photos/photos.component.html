@@ -1,0 +1,30 @@
+<div class="photos">
+    <div class="search">
+        <form class="search--form">
+            <mat-form-field class="search--field">
+                <span matPrefix> </span>
+                <input #searchInput type="tel" matInput placeholder="Keresés" name="search" [(ngModel)]="search">
+                <div matSuffix mat-button><mat-icon>search</mat-icon></div>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="container" *ngIf="loaded">
+        <div class="photo" *ngFor="let photo of filteredCatalog | slice:startIndex:endIndex">
+            <mat-card class="card">
+                <iframe [src]="photo.photo" width="192" height="128"></iframe>
+                <mat-card-content>
+                    <p class="card--name">
+                        {{photo.name}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions class="buttons">
+                    <button mat-raised-button (click)="openDetailsDialog(photo)">Részletek</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <mat-paginator (page)="handlePageEvent($event)" [length]="filteredCatalog.length" [pageSize]="pageSize"
+        [showFirstLastButtons]="showFirstLastButtons" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex"
+        aria-label="Select page">
+    </mat-paginator>
+</div>

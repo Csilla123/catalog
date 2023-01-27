@@ -1,0 +1,12 @@
+
+<p class="title" mat-dialog-title>{{data.name}}</p>
+<mat-dialog-content >
+    <iframe mat-card-image [src]="data.photo" width="720" height="480"></iframe>
+        <ul>
+            <li>Tájegység: {{data.place}}</li>
+            <li>Alapanyagok:{{data.materials}}</li>
+        </ul> 
+</mat-dialog-content>
+<mat-dialog-actions class="buttons" align="end">
+    <button mat-raised-button mat-dialog-close>Bezár</button>
+</mat-dialog-actions>

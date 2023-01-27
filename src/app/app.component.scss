@@ -1,0 +1,33 @@
+header {
+    margin: auto;
+    height: 110px;
+    background-image: url(/assets/fejlec.jpg);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    h1 {
+
+
+        text-align: center;
+        color: #fbfbf7bf;
+        text-shadow: 4px 2px 5px black;
+
+    }
+}
+
+@media screen and (min-width: 480px) {
+    header{
+        width: 90%;
+    }
+    h1{
+        font: italic 400 7vW/110px 'Cookie', Helvetica, sans-serif;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    header{
+        width: 100%;
+    }
+    h1{
+        font: italic 400 12vW/52px 'Cookie', Helvetica, sans-serif;
+    }
+}

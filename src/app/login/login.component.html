@@ -1,0 +1,26 @@
+<div class="login">
+    <form class="login-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="username"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div *ngIf="invalidUsernamePwd" class="error"><p>Invalid username or password!</p></div>
+    </form>
+    <div class="buttons">
+        <button mat-raised-button (click)="login()">Login</button>
+    </div>
+</div>

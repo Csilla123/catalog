@@ -1,0 +1,15 @@
+.login{
+    width: 200px;
+    margin:auto;
+    padding-top:50px;
+}
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.error{
+    color:red;
+}
