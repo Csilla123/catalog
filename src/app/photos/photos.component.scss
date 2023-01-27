@@ -40,7 +40,6 @@
 
 .photos {
     position: relative;
-    height: calc(100% - 110px);
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -57,14 +56,14 @@ mat-paginator{
 
 @media screen and (min-width: 480px) {
     .photos {
-        height: calc(100% - 110px);
+        min-height: calc(100% - 110px);
         width: 90%;
     }
 }
 
 @media screen and (max-width: 479px) {
     .photos {
-        height: calc(100% - 80px);
+        min-height: calc(100% - 80px);
         width: 100%;
     }
 }

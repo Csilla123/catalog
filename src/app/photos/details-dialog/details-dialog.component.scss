@@ -1,6 +1,7 @@
 .buttons{
     display:flex;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .title{
@@ -9,7 +10,24 @@
 
 mat-dialog-content{
     max-height: none;
+    .details{
+        display: flex;
+    }
+    iframe{
+        flex: 2.5;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 4px;
+    }  
+    ul {
+        margin:0;
+        flex: 1;
+    }
+}
+
+.wrapper{
+    background-image: linear-gradient(to bottom, #ffffff,rgba(0, 0, 0, 0.10),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0.20),rgba(0, 0, 0, 0.25));
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }

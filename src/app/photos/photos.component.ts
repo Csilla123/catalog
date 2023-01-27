@@ -22,11 +22,11 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   filteredCatalog: Catalog[] = [];
   catalog$: Observable<Catalog[]> | undefined;
   length = 500;
-  pageSize = 2;
+  pageSize = 10;
   pageIndex = 0;
   startIndex = 0;
-  endIndex = 2;
-  pageSizeOptions = [2, 10, 25];
+  endIndex = 10;
+  pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer, public dialog: MatDialog) { }
@@ -70,7 +70,7 @@ export class PhotosComponent implements OnInit, AfterViewInit {
       {
         data: catalog,
         height: '700px',
-        width: '900px',
+        width: '100vw',
       });
   }
 
