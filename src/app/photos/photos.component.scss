@@ -68,6 +68,11 @@ a {
     cursor: pointer;
 }
 
+img {
+    object-fit: contain;
+    margin-top: 10px;
+}
+
 @media screen and (min-width: 480px) {
     .photos {
         min-height: calc(100% - 110px);

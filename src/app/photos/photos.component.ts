@@ -30,12 +30,14 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
   imageWidth = "240";
+  imageHeight = "160";
   dialogOpened = false;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer, public dialog: MatDialog, private deviceService: DeviceDetectorService) { }
   ngOnInit(): void {
     if(this.deviceService.isMobile()){
       this.imageWidth = "300";
+      this.imageHeight = "200";
     }
     this.catalog$ = this.googleSheetsDbService.get<Catalog>(
       environment.catalog.spreadsheetId, environment.catalog.worksheetName, catalogAttributesMapping);

@@ -11,7 +11,7 @@
     <div class="container" *ngIf="loaded">
         <div class="photo" *ngFor="let photo of filteredCatalog | slice:startIndex:endIndex">
             <mat-card class="card">
-                <a (click)="openDetailsDialog(photo)"> <img [src]="photo.photo" [width]="imageWidth"/></a>
+                <a (click)="openDetailsDialog(photo)"> <img [src]="photo.photo" [width]="imageWidth" [height]="imageHeight"/></a>
                 <mat-card-content>
                     <p class="card--name">
                         {{photo.name}}
