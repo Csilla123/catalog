@@ -59,7 +59,14 @@ export class PhotosComponent implements OnInit, AfterViewInit {
       .subscribe(res => {
         const inputValue = (res.target as HTMLInputElement).value;
         if(inputValue.trim() !==""){
-          this.filteredCatalog = this.catalog?.filter(photo => photo.name.includes(inputValue) ||  photo.place.includes(inputValue) ||  photo.materials.includes(inputValue));
+          this.filteredCatalog = this.catalog?.filter(photo => {
+            for (const value of Object.values(photo)) { 
+              if(typeof value === "string" && value.includes(inputValue.trim())){
+                return true;
+              }
+            }
+            return false;
+          });
         } else {
           if(this.catalog){
             this.filteredCatalog = [...this.catalog] ;
