@@ -70,11 +70,11 @@ a {
     }
 
     .card {
-        max-width: 192px;
+        max-width: 240px;
     }
 
     .container {
-        grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
 }
 

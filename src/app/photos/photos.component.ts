@@ -29,7 +29,7 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   endIndex = 10;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
-  imageWidth = "192";
+  imageWidth = "240";
   dialogOpened = false;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer, public dialog: MatDialog, private deviceService: DeviceDetectorService) { }
