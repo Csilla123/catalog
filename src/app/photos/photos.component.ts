@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 @Component({
@@ -28,9 +29,14 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   endIndex = 10;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
+  imageWidth = "192";
+  dialogOpened = false;
 
-  constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer, public dialog: MatDialog) { }
+  constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer, public dialog: MatDialog, private deviceService: DeviceDetectorService) { }
   ngOnInit(): void {
+    if(this.deviceService.isMobile()){
+      this.imageWidth = "300";
+    }
     this.catalog$ = this.googleSheetsDbService.get<Catalog>(
       environment.catalog.spreadsheetId, environment.catalog.worksheetName, catalogAttributesMapping);
     this.catalog$.subscribe(
@@ -38,7 +44,7 @@ export class PhotosComponent implements OnInit, AfterViewInit {
         this.catalog = value.map(
           element => {
             const photoId = element.photo.toString().substring(element.photo.toString().indexOf("id=") + 3);
-            element.photo = this.sanitizer.bypassSecurityTrustResourceUrl("https://drive.google.com/file/d/" + photoId + "/preview");
+            element.photo = this.sanitizer.bypassSecurityTrustResourceUrl("https://drive.google.com/uc?export=view&id=" + photoId );
             return element;
           }); 
           this.filteredCatalog = [...this.catalog];
@@ -66,12 +72,16 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   }
 
   openDetailsDialog(catalog: Catalog) {
-    this.dialog.open(DetailsDialogComponent,
+    this.dialogOpened = true;
+    const dialogRef = this.dialog.open(DetailsDialogComponent,
       {
         data: catalog,
         height: '700px',
         width: '100vw',
       });
+      dialogRef.afterClosed().subscribe(
+        () =>  this.dialogOpened = false
+      )
   }
 
   handlePageEvent(event: PageEvent) {
